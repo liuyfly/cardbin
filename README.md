@@ -1,3 +1,3 @@
 # cardbin
 This is a readme file.
-//To be continued
+# To be continued
