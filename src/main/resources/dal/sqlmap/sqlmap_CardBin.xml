@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="CardBin" >
+
+  <typeAlias alias="cardBinDO" type="com.liuyfly.biz.dal.dataobject.CardBinDO" />
+
+  <resultMap id="cardBinDOResultMap" class="cardBinDO" >
+    <result property="id" column="id" />
+    <result property="instCode" column="inst_code" />
+    <result property="instName" column="inst_name" />
+    <result property="cardName" column="card_name" />
+    <result property="pan" column="pan" />
+    <result property="panLen" column="pan_len" />
+    <result property="panPri" column="pan_pri" />
+    <result property="panPriLen" column="pan_pri_len" />
+    <result property="cardType" column="card_type" />
+    <result property="createTime" column="create_time" />
+  </resultMap>
+
+  <sql id="cardBin_columns" >
+    a1.id, a1.inst_code, a1.inst_name, a1.card_name, a1.pan, a1.pan_len, a1.pan_pri, 
+      a1.pan_pri_len, a1.card_type, a1.create_time
+  </sql>
+
+  <sql id="cardBin_do_columns" >
+    a1.id, a1.inst_code, a1.inst_name, a1.card_name, a1.pan, a1.pan_len, a1.pan_pri, 
+      a1.pan_pri_len, a1.card_type, a1.create_time
+  </sql>
+
+  <sql id="queryParams" >
+    <dynamic prepend="WHERE" >
+      <isNotNull property="id" prepend="AND" >
+        <![CDATA[  
+        id = #id#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="instCode" prepend="AND" >
+        <![CDATA[  
+        inst_code = #instCode#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="instName" prepend="AND" >
+        <![CDATA[  
+        inst_name = #instName#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="cardName" prepend="AND" >
+        <![CDATA[  
+        card_name = #cardName#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="pan" prepend="AND" >
+        <![CDATA[  
+        pan = #pan#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="panLen" prepend="AND" >
+        <![CDATA[  
+        pan_len = #panLen#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="panPri" prepend="AND" >
+        <![CDATA[  
+        pan_pri = #panPri#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="panPriLen" prepend="AND" >
+        <![CDATA[  
+        pan_pri_len = #panPriLen#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="cardType" prepend="AND" >
+        <![CDATA[  
+        card_type = #cardType#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="createTime" prepend="AND" >
+        <![CDATA[  
+        create_time = #createTime#  
+        ]]>  
+      </isNotNull>
+    </dynamic>
+  </sql>
+
+  <sql id="doQueryParams" >
+    <dynamic prepend="WHERE" >
+      <isNotNull property="id" prepend="AND" >
+        <![CDATA[  
+        id = #id#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="instCode" prepend="AND" >
+        <![CDATA[  
+        inst_code = #instCode#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="instName" prepend="AND" >
+        <![CDATA[  
+        inst_name = #instName#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="cardName" prepend="AND" >
+        <![CDATA[  
+        card_name = #cardName#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="pan" prepend="AND" >
+        <![CDATA[  
+        pan = #pan#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="panLen" prepend="AND" >
+        <![CDATA[  
+        pan_len = #panLen#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="panPri" prepend="AND" >
+        <![CDATA[  
+        pan_pri = #panPri#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="panPriLen" prepend="AND" >
+        <![CDATA[  
+        pan_pri_len = #panPriLen#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="cardType" prepend="AND" >
+        <![CDATA[  
+        card_type = #cardType#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="createTime" prepend="AND" >
+        <![CDATA[  
+        create_time = #createTime#  
+        ]]>  
+      </isNotNull>
+    </dynamic>
+  </sql>
+
+  <insert id="insert" parameterClass="cardBinDO" >
+    INSERT INTO card_bin( id, inst_code, inst_name, card_name, pan, pan_len, pan_pri, pan_pri_len, 
+      card_type, create_time)
+     VALUES ( #id#, #instCode#, #instName#, #cardName#, #pan#, #panLen#, #panPri#, #panPriLen#, 
+      #cardType#, #createTime#)
+    <selectKey keyProperty="id" resultClass="java.lang.Long" >
+      SELECT LAST_INSERT_ID() AS value
+    </selectKey>
+  </insert>
+
+  <update id="update" parameterClass="cardBinDO" >
+    UPDATE card_bin   
+    <dynamic prepend="SET" >
+      <!--
+      <isNotNull property="id" prepend="," >
+        <![CDATA[  
+        id = #id#  
+        ]]>  
+      </isNotNull>
+      -->
+      <isNotNull property="instCode" prepend="," >
+        <![CDATA[  
+        inst_code = #instCode#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="instName" prepend="," >
+        <![CDATA[  
+        inst_name = #instName#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="cardName" prepend="," >
+        <![CDATA[  
+        card_name = #cardName#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="pan" prepend="," >
+        <![CDATA[  
+        pan = #pan#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="panLen" prepend="," >
+        <![CDATA[  
+        pan_len = #panLen#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="panPri" prepend="," >
+        <![CDATA[  
+        pan_pri = #panPri#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="panPriLen" prepend="," >
+        <![CDATA[  
+        pan_pri_len = #panPriLen#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="cardType" prepend="," >
+        <![CDATA[  
+        card_type = #cardType#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="createTime" prepend="," >
+        <![CDATA[  
+        create_time = #createTime#  
+        ]]>  
+      </isNotNull>
+    </dynamic>
+     WHERE id = #id#  
+  </update>
+
+  <select id="findByPrimaryKey" parameterClass="java.lang.Long" resultMap="cardBinDOResultMap" >
+     SELECT 
+    <include refid="cardBin_do_columns" />
+    <![CDATA[  
+     FROM card_bin a1 WHERE id = #id#
+    ]]>  
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterClass="java.lang.Long" >
+    <![CDATA[  
+     DELETE FROM card_bin WHERE id = #id#
+    ]]>  
+  </delete>
+
+  <select id="countByDOExample" parameterClass="cardBinDO" resultClass="java.lang.Integer" >
+    SELECT COUNT(id) AS num FROM card_bin 
+    <include refid="doQueryParams" />
+  </select>
+
+  <select id="findListByDO" resultMap="cardBinDOResultMap" parameterClass="cardBinDO" >
+     SELECT 
+    <include refid="cardBin_do_columns" />
+     FROM card_bin a1 
+    <include refid="doQueryParams" />
+  </select>
+  
+  <select id="queryPageCardBin" resultMap="cardBinDOResultMap" parameterClass="cardBinDO" >
+     SELECT 
+    <include refid="cardBin_do_columns" />
+     FROM card_bin a1 
+    <include refid="doQueryParams" />
+    ORDER BY id DESC
+    LIMIT 500
+  </select>
+</sqlMap>

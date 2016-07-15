@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="GB2312"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans" xmlns:process="http://www.zhongan.com/schema/pipeline"
+	xsi:schemaLocation="
+           http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/jdbc  http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
+       " default-autowire="byName">
+	<import resource="classpath:spring-dao.xml" />
+	<import resource="classpath:cardbin-servlet.xml" />
+	<import resource="classpath:spring-mybatis.xml" />
+	
+	<bean id="cardBinService" class="com.liuyfly.service.impl.CardBinServiceImpl" />
+	
+	<bean id="cardBinSequenceService" class="com.liuyfly.service.impl.SequenceServiceImpl">
+		<property name="name" value="seq_card_bin" />
+		<property name="step" value="2" />
+	</bean>
+</beans>
